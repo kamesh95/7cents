@@ -15,7 +15,14 @@
  *    }
  */
 
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOAD_REPOS,
+  LOAD_REPOS_SUCCESS,
+  LOAD_REPOS_ERROR,
+  LOGIN,
+  LOGIN_ERROR,
+  LOGIN_SUCCESS,
+} from './constants';
 
 /**
  * Load the repositories, this action starts the request saga
@@ -25,6 +32,41 @@ import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
 export function loadRepos() {
   return {
     type: LOAD_REPOS,
+  };
+}
+
+/**
+ * Login user
+ *
+ * @return {object} An action object with a type of LOGIN
+ */
+export function login() {
+  return {
+    type: LOGIN,
+  };
+}
+
+/**
+ * Dispatched when the user login is successfull
+ *
+ * @return {object} An action object with a type of LOGIN_SUCCESS
+ */
+export function loginSuccess(username) {
+  return {
+    type: LOGIN_SUCCESS,
+    username,
+  };
+}
+
+/**
+ * Dispatched when the user login fails
+ *
+ * @return {object} An action object with a type of LOGIN_ERROR
+ */
+export function loginError(error) {
+  return {
+    type: LOGIN_ERROR,
+    error,
   };
 }
 
