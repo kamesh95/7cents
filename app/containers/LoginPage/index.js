@@ -9,6 +9,8 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import Divider from '@material-ui/core/Divider';
+import FacebookIcon from '@material-ui/icons/Facebook';
 import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
 import { useInjectReducer } from 'utils/injectReducer';
@@ -18,6 +20,7 @@ import Box from './Box';
 import Logo from './Logo';
 import Grid from './Grid';
 import Form from './Form';
+import Link from './Link';
 import Input from './Input';
 import Button from './Button';
 import GridItem from './GridItem';
@@ -55,13 +58,7 @@ export function LoginPage({
   return (
     <Container maxWidth="sm">
       <Box component="div" border={1} borderColor="grey.300">
-        <Grid
-          container
-          spacing={1}
-          direction="column"
-          alignItems="center"
-          justify="center"
-        >
+        <Grid container spacing={1} alignItems="center" justify="center">
           <GridItem item xs={6}>
             <Logo src={LogoSrc} alt="Logo" />
           </GridItem>
@@ -91,6 +88,7 @@ export function LoginPage({
           </GridItem>
           <GridItem item xs={9}>
             <Button
+              primary
               onClick={onSubmitForm}
               fullWidth
               disabled={loginDisabled}
@@ -98,6 +96,37 @@ export function LoginPage({
             >
               <FormattedMessage {...messages.loginButton} />
             </Button>
+          </GridItem>
+          <Grid
+            container
+            alignItems="center"
+            applyMargin="15px 0"
+            justify="center"
+          >
+            <GridItem applyMinWidth="30%" item>
+              <Divider />
+            </GridItem>
+            <GridItem applyMinWidth="10%" item xs={1}>
+              <FormattedMessage {...messages.orLabel} />
+            </GridItem>
+            <GridItem applyMinWidth="30%" item>
+              <Divider />
+            </GridItem>
+          </Grid>
+          <GridItem item xs={9}>
+            <Button
+              fullWidth
+              onClick={onSubmitForm}
+              startIcon={<FacebookIcon />}
+              variant="outlined"
+            >
+              <FormattedMessage {...messages.loginWithFb} />
+            </Button>
+          </GridItem>
+          <GridItem item xs={9}>
+            <Link href="https://google.com/123">
+              <FormattedMessage {...messages.forgotPwd} />
+            </Link>
           </GridItem>
         </Grid>
       </Box>

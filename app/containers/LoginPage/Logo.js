@@ -5,6 +5,6 @@ export default styled.img`
   height: 75px;
   display: block;
   margin: auto;
-  margin-top: 4vh;
-  margin-bottom: 4vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 `;
