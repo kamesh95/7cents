@@ -8,6 +8,6 @@ export default styled(Container)`
   display: flex !important;
 
   && .MuiButton-contained.Mui-disabled {
-    background-color: #6da9c5 !important;
+    background-color: #64b5f6 !important;
   }
 `;
