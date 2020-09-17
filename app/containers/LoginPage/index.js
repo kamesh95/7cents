@@ -88,7 +88,7 @@ export function LoginPage({
           </GridItem>
           <GridItem item xs={9}>
             <Button
-              primary
+              primary="true"
               onClick={onSubmitForm}
               fullWidth
               disabled={loginDisabled}
@@ -100,16 +100,16 @@ export function LoginPage({
           <Grid
             container
             alignItems="center"
-            applyMargin="15px 0"
+            applymargin="15px 0"
             justify="center"
           >
-            <GridItem applyMinWidth="30%" item>
+            <GridItem applyminwidth="30%" item>
               <Divider />
             </GridItem>
-            <GridItem applyMinWidth="10%" item xs={1}>
+            <GridItem applyminwidth="10%" item xs={1}>
               <FormattedMessage {...messages.orLabel} />
             </GridItem>
-            <GridItem applyMinWidth="30%" item>
+            <GridItem applyminwidth="30%" item>
               <Divider />
             </GridItem>
           </Grid>

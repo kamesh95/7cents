@@ -6,5 +6,5 @@ export default styled(Grid)`
   text-align: center;
   font-size: 13px;
   color: grey;
-  min-width: ${props => props.applyMinWidth};
+  min-width: ${props => props.applyminwidth};
 `;
