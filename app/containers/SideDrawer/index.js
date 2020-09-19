@@ -48,7 +48,7 @@ export default function SideDrawer(props) {
       <ListHead>
         CATEGORIES
         <List>
-          {['Home', 'Bills', 'Groceries', 'Others'].map((text, index) => (
+          {['Home', 'Transactions', 'Bills & Invoices'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -62,7 +62,7 @@ export default function SideDrawer(props) {
       <ListHead>
         SUPPORT
         <List>
-          {['Donate', 'Contact'].map((text, index) => (
+          {['Feedback', 'Contact'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

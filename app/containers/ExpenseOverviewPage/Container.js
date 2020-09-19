@@ -19,4 +19,12 @@ export default styled(Container)`
   bottom: 0;
   top: 0;
   position: absolute;
+
+  svg {
+    filter: drop-shadow(1px 1px 2px #1976d2);
+  }
+
+  text {
+    fill: black !important;
+  }
 `;
