@@ -6,7 +6,7 @@ export default styled(Container)`
   background-color: #1976d2;
   overflow-y: auto;
   flex-grow: 1;
-  padding: 50px;
+  padding: 25px;
   ${props => props.theme.breakpoints.up('sm')} {
     width: 76% !important;
     margin: 3% 21% !important;

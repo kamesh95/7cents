@@ -1,29 +1,21 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ResponsivePie } from '@nivo/pie';
-import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 
-import Title from './Title';
+import WidgetTitle from '../WidgetTitle/index';
 import messages from './messages';
 import DonutText from './DonutText';
 import FilledCircle from './FilledCircle';
+import Paper from './Paper';
 
 function BalanceStatWidget(props) {
   return (
     <div>
-      <Paper
-        elevation={5}
-        style={{
-          padding: '10px',
-          backgroundColor: '#F5F8FD',
-          width: props.theme.spacing(30),
-          height: props.theme.spacing(40),
-        }}
-      >
-        <Title>
+      <Paper elevation={5} theme={props.theme}>
+        <WidgetTitle>
           <FormattedMessage {...messages.balanceStat} />
-        </Title>
+        </WidgetTitle>
         <ResponsivePie
           data={props.data}
           margin={{ top: -50, right: 20, bottom: 0, left: 20 }}
@@ -73,7 +65,7 @@ function BalanceStatWidget(props) {
 
 BalanceStatWidget.propTypes = {
   theme: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
 };
 
 export default BalanceStatWidget;
