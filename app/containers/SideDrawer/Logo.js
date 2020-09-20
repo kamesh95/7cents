@@ -4,5 +4,5 @@ export default styled.img`
   width: 40px;
   height: 40px;
   display: block;
-  background: white;
+  background: #f1f5fa;
 `;

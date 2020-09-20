@@ -6,4 +6,5 @@ export default styled(Paper)`
   background-color: #f5f8fd;
   width: ${props => props.theme.spacing(30)}px;
   height: ${props => props.theme.spacing(40)}px;
+  margin-right: 20px;
 `;

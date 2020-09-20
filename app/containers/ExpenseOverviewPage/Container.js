@@ -3,10 +3,10 @@ import { Container } from '@material-ui/core';
 
 export default styled(Container)`
   color: #fff;
-  background-color: #1976d2;
+  background-color: #e1f5fe;
   overflow-y: auto;
   flex-grow: 1;
-  padding: 25px;
+  padding: 20px;
   ${props => props.theme.breakpoints.up('sm')} {
     width: 76% !important;
     margin: 3% 21% !important;

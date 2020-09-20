@@ -11,6 +11,8 @@ import SideDrawer from 'containers/SideDrawer';
 import Container from './Container';
 import BalanceStatWidget from '../../components/BalanceStatWidget';
 import TransactionsWidget from '../../components/TransactionsWidget';
+import DailyBalanceOverviewWidget from '../../components/DailyBalanceOverviewWidget';
+import Flex from './Flex';
 
 const data = [
   {
@@ -35,7 +37,7 @@ const transactionData = [
   createData(
     new Date().toLocaleString(),
     'Paypal',
-    'Via Paypal',
+    'Via Paypal to Kamesh for monthly work 8 hours.',
     'Credit',
     '₹114.0',
   ),
@@ -54,7 +56,46 @@ const transactionData = [
     'Debit',
     '₹111',
   ),
-  createData(new Date().toLocaleString(), 'UPI', 'Google Pay', 'Debit', '₹3.9'),
+];
+
+const dailyBalanceData = [
+  {
+    dateTime: 'AD',
+    expenses: 97,
+    expensesColor: 'hsl(109, 70%, 50%)',
+    revenues: 12,
+    revenuesColor: 'hsl(26, 70%, 50%)',
+  },
+  {
+    dateTime: 'AE',
+    expenses: 81,
+    revenues: 36,
+  },
+  {
+    dateTime: 'AF',
+    expenses: 147,
+    revenues: 127,
+  },
+  {
+    dateTime: 'AG',
+    expenses: 61,
+    revenues: 14,
+  },
+  {
+    dateTime: 'AI',
+    expenses: 1000,
+    revenues: 93,
+  },
+  {
+    dateTime: 'AL',
+    expenses: 138,
+    revenues: 132,
+  },
+  {
+    dateTime: 'AM',
+    expenses: 166,
+    revenues: 5,
+  },
 ];
 
 export default function FeaturePage() {
@@ -66,8 +107,14 @@ export default function FeaturePage() {
       </Grid>
       <Grid item>
         <Container theme={muiTheme}>
-          <BalanceStatWidget theme={muiTheme} data={data} />
-          <TransactionsWidget data={transactionData} />
+          <Flex theme={muiTheme}>
+            <BalanceStatWidget theme={muiTheme} data={data} />
+            <DailyBalanceOverviewWidget
+              theme={muiTheme}
+              data={dailyBalanceData}
+            />
+          </Flex>
+          <TransactionsWidget theme={muiTheme} data={transactionData} />
         </Container>
       </Grid>
     </Grid>

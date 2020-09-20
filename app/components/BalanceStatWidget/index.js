@@ -12,7 +12,7 @@ import Paper from './Paper';
 function BalanceStatWidget(props) {
   return (
     <div>
-      <Paper elevation={5} theme={props.theme}>
+      <Paper elevation={0} theme={props.theme}>
         <WidgetTitle>
           <FormattedMessage {...messages.balanceStat} />
         </WidgetTitle>

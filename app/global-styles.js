@@ -17,9 +17,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #app {
-    background-color: #fafafa;
+    background-color: #0277BD;
     min-height: 100%;
     min-width: 100%;
+  }
+
+  .MuiPaper-root {
+    background-color: #B3E5FC !important;
   }
 
   p,

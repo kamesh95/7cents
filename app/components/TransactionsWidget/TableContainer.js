@@ -16,11 +16,13 @@ export default styled(TableContainer)`
 
   .MuiTableCell-head {
     font-weight: 700;
-    color: grey;
+    border-bottom: none !important;
+    color: black;
     font-size: 0.825rem;
   }
 
   .MuiTableCell-body {
+    border-bottom: none !important;
     font-size: 0.75rem;
     line-height: 1.25;
     padding: 12px;

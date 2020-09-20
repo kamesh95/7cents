@@ -6,27 +6,39 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { useTheme } from '@material-ui/core/styles';
+import { FormattedMessage } from 'react-intl';
 
+import messages from './messages';
 import WidgetTitle from '../WidgetTitle';
 import TableContainer from './TableContainer';
 import icon from '../../images/icon-512x512.png';
 
 function TransactionsWidget(props) {
-  const muiTheme = useTheme();
   const rows = props.data;
 
   return (
-    <TableContainer theme={muiTheme} component={Paper} elevation={5}>
-      <WidgetTitle> Transactions </WidgetTitle>
+    <TableContainer theme={props.theme} component={Paper} elevation={0}>
+      <WidgetTitle>
+        <FormattedMessage {...messages.title} />
+      </WidgetTitle>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Date and Time</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell>Particulars</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Amount</TableCell>
+            <TableCell>
+              <FormattedMessage {...messages.dateTime} />
+            </TableCell>
+            <TableCell>
+              <FormattedMessage {...messages.paymentMethod} />
+            </TableCell>
+            <TableCell>
+              <FormattedMessage {...messages.particulars} />
+            </TableCell>
+            <TableCell>
+              <FormattedMessage {...messages.type} />
+            </TableCell>
+            <TableCell>
+              <FormattedMessage {...messages.amount} />
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,6 +67,7 @@ function TransactionsWidget(props) {
 }
 
 TransactionsWidget.propTypes = {
+  theme: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired,
 };
 
