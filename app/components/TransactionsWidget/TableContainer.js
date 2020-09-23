@@ -4,7 +4,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 export default styled(TableContainer)`
   padding: 10px;
   margin-top: 20px;
-  max-width: 75%;
+  max-width: 785px;
 
   ${props => props.theme.breakpoints.down('sm')} {
     max-width: 100%;

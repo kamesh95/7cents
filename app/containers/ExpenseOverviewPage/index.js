@@ -13,6 +13,7 @@ import BalanceStatWidget from '../../components/BalanceStatWidget';
 import TransactionsWidget from '../../components/TransactionsWidget';
 import DailyBalanceOverviewWidget from '../../components/DailyBalanceOverviewWidget';
 import Flex from './Flex';
+import IncomeExpenseWidget from '../../components/IncomeExpenseWidget';
 
 const data = [
   {
@@ -98,6 +99,11 @@ const dailyBalanceData = [
   },
 ];
 
+const incomeExpenseData = {
+  expense: '$22,789.99',
+  income: '$6009.10',
+};
+
 export default function FeaturePage() {
   const muiTheme = useTheme();
   return (
@@ -114,7 +120,10 @@ export default function FeaturePage() {
               data={dailyBalanceData}
             />
           </Flex>
-          <TransactionsWidget theme={muiTheme} data={transactionData} />
+          <Flex theme={muiTheme}>
+            <TransactionsWidget theme={muiTheme} data={transactionData} />
+            <IncomeExpenseWidget theme={muiTheme} data={incomeExpenseData} />
+          </Flex>
         </Container>
       </Grid>
     </Grid>
