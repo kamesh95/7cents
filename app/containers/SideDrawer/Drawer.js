@@ -7,7 +7,7 @@ export default styled(Drawer)`
     bottom: 0;
     height: auto;
     width: ${props => (props.fixedwidth ? '225px' : '18%')};
-    background-color: #81d4fa !important;
+    background-color: mistyrose !important;
     color: white;
   }
 `;

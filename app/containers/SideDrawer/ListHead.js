@@ -6,6 +6,6 @@ export default styled.div`
   color: black;
 
   && .MuiListItem-button:hover {
-    background-color: #b3e5fc;
+    background-color: white;
   }
 `;

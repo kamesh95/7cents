@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .MuiPaper-root {
-    background-color: #B3E5FC !important;
+    background-color: #white !important;
   }
 
   p,

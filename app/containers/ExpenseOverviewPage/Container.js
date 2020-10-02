@@ -3,7 +3,7 @@ import { Container } from '@material-ui/core';
 
 export default styled(Container)`
   color: #fff;
-  background-color: #81d4fa;
+  background-color: mistyrose;
   overflow-y: auto;
   flex-grow: 1;
   padding: 20px;
