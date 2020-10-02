@@ -3,109 +3,59 @@
  *
  * Show overview of all expenses
  */
-import React from 'react';
+import React, { useEffect, memo } from 'react';
 import { Grid } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import PropTypes from 'prop-types';
 
 import SideDrawer from 'containers/SideDrawer';
+import { useInjectSaga } from 'utils/injectSaga';
+import {
+  makeSelectBalanceStats,
+  makeSelectBalanceHistory,
+  makeSelectLastFiveTransactions,
+} from 'containers/App/selectors';
+
+import Flex from './Flex';
+import saga from './saga';
 import Container from './Container';
 import BalanceStatWidget from '../../components/BalanceStatWidget';
 import TransactionsWidget from '../../components/TransactionsWidget';
 import DailyBalanceOverviewWidget from '../../components/DailyBalanceOverviewWidget';
-import Flex from './Flex';
 import IncomeExpenseWidget from '../../components/IncomeExpenseWidget';
-
-const data = [
-  {
-    id: 'Spent',
-    label: 'Spent',
-    value: 390,
-    color: 'hsl(318, 70%, 50%)',
-  },
-  {
-    id: 'Remaining',
-    label: 'Remaining',
-    value: 180,
-    color: 'hsl(94, 70%, 50%)',
-  },
-];
-
-function createData(dateTime, paymentMethod, particulars, type, amount) {
-  return { dateTime, paymentMethod, particulars, type, amount };
-}
-
-const transactionData = [
-  createData(
-    new Date().toLocaleString(),
-    'Paypal',
-    'Via Paypal to Kamesh for monthly work 8 hours.',
-    'Credit',
-    '₹114.0',
-  ),
-  createData(new Date().toLocaleString(), 'Credit Card', '', 'Debit', '₹4300'),
-  createData(
-    new Date().toLocaleString(),
-    'Debit Card',
-    'Groceries',
-    'Credit',
-    '₹60000',
-  ),
-  createData(
-    new Date().toLocaleString(),
-    'Net Banking',
-    'Test Data',
-    'Debit',
-    '₹111',
-  ),
-];
-
-const dailyBalanceData = [
-  {
-    dateTime: 'AD',
-    expenses: 97,
-    expensesColor: 'hsl(109, 70%, 50%)',
-    revenues: 12,
-    revenuesColor: 'hsl(26, 70%, 50%)',
-  },
-  {
-    dateTime: 'AE',
-    expenses: 81,
-    revenues: 36,
-  },
-  {
-    dateTime: 'AF',
-    expenses: 147,
-    revenues: 127,
-  },
-  {
-    dateTime: 'AG',
-    expenses: 61,
-    revenues: 14,
-  },
-  {
-    dateTime: 'AI',
-    expenses: 1000,
-    revenues: 93,
-  },
-  {
-    dateTime: 'AL',
-    expenses: 138,
-    revenues: 132,
-  },
-  {
-    dateTime: 'AM',
-    expenses: 166,
-    revenues: 5,
-  },
-];
+import {
+  loadBalanceStats,
+  loadBalanceHistory,
+  loadLastFiveTransactions,
+} from '../App/actions';
 
 const incomeExpenseData = {
   expense: '$22,789.99',
   income: '$6009.10',
 };
 
-export default function FeaturePage() {
+const key = 'expense_overview';
+
+export function ExpenseOverviewPage({
+  balanceStats,
+  balanceHistory,
+  lastFiveTransactions,
+  onLoadBalanceStats,
+  onLoadBalanceHistory,
+  onLoadLastFiveTransactions,
+}) {
   const muiTheme = useTheme();
+  useInjectSaga({ key, saga });
+
+  useEffect(() => {
+    onLoadBalanceStats();
+    onLoadLastFiveTransactions();
+    onLoadBalanceHistory();
+  }, []);
+
   return (
     <Grid container direction="column">
       <Grid item>
@@ -114,14 +64,14 @@ export default function FeaturePage() {
       <Grid item>
         <Container theme={muiTheme}>
           <Flex theme={muiTheme}>
-            <BalanceStatWidget theme={muiTheme} data={data} />
+            <BalanceStatWidget theme={muiTheme} data={balanceStats} />
             <DailyBalanceOverviewWidget
               theme={muiTheme}
-              data={dailyBalanceData}
+              data={balanceHistory}
             />
           </Flex>
           <Flex theme={muiTheme}>
-            <TransactionsWidget theme={muiTheme} data={transactionData} />
+            <TransactionsWidget theme={muiTheme} data={lastFiveTransactions} />
             <IncomeExpenseWidget theme={muiTheme} data={incomeExpenseData} />
           </Flex>
         </Container>
@@ -129,3 +79,36 @@ export default function FeaturePage() {
     </Grid>
   );
 }
+
+ExpenseOverviewPage.propTypes = {
+  balanceStats: PropTypes.array,
+  balanceHistory: PropTypes.array,
+  lastFiveTransactions: PropTypes.array,
+  onLoadBalanceStats: PropTypes.func.isRequired,
+  onLoadBalanceHistory: PropTypes.func.isRequired,
+  onLoadLastFiveTransactions: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = createStructuredSelector({
+  balanceStats: makeSelectBalanceStats(),
+  balanceHistory: makeSelectBalanceHistory(),
+  lastFiveTransactions: makeSelectLastFiveTransactions(),
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onLoadBalanceStats: () => dispatch(loadBalanceStats()),
+    onLoadBalanceHistory: () => dispatch(loadBalanceHistory()),
+    onLoadLastFiveTransactions: () => dispatch(loadLastFiveTransactions()),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(ExpenseOverviewPage);

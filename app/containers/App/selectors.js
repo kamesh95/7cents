@@ -27,10 +27,22 @@ const makeSelectError = () =>
     globalState => globalState.error,
   );
 
-const makeSelectRepos = () =>
+const makeSelectBalanceStats = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.userData.repositories,
+    globalState => globalState.userData.balanceStats,
+  );
+
+const makeSelectBalanceHistory = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.userData.balanceHistory,
+  );
+
+const makeSelectLastFiveTransactions = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.userData.lastFiveTransactions,
   );
 
 const makeSelectLocation = () =>
@@ -39,11 +51,20 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
+const selectUserId = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.userData.id,
+  );
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
   makeSelectLoading,
   makeSelectError,
-  makeSelectRepos,
+  selectUserId,
+  makeSelectBalanceStats,
+  makeSelectBalanceHistory,
+  makeSelectLastFiveTransactions,
   makeSelectLocation,
 };

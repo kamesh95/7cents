@@ -16,22 +16,50 @@
  */
 
 import {
-  LOAD_REPOS,
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS_ERROR,
+  LOAD_BALANCE_STATS,
+  LOAD_BALANCE_STATS_SUCCESS,
+  LOAD_BALANCE_STATS_ERROR,
+  LOAD_LAST_FIVE_TRANSACTIONS,
+  LOAD_LAST_FIVE_TRANSACTIONS_SUCCESS,
+  LOAD_LAST_FIVE_TRANSACTIONS_ERROR,
+  LOAD_BALANCE_HISTORY,
+  LOAD_BALANCE_HISTORY_SUCCESS,
+  LOAD_BALANCE_HISTORY_ERROR,
   LOGIN,
   LOGIN_ERROR,
   LOGIN_SUCCESS,
 } from './constants';
 
 /**
- * Load the repositories, this action starts the request saga
+ * Load the Balance Stats, this action starts the request saga
  *
- * @return {object} An action object with a type of LOAD_REPOS
+ * @return {object} An action object with a type of LOAD_BALANCE_STATS
  */
-export function loadRepos() {
+export function loadBalanceStats() {
   return {
-    type: LOAD_REPOS,
+    type: LOAD_BALANCE_STATS,
+  };
+}
+
+/**
+ * Load the Last 5 transactions, this action starts the request saga
+ *
+ * @return {object} An action object with a type of LOAD_LAST_FIVE_TRANSACTIONS
+ */
+export function loadLastFiveTransactions() {
+  return {
+    type: LOAD_LAST_FIVE_TRANSACTIONS,
+  };
+}
+
+/**
+ * Load the balance history, this action starts the request saga
+ *
+ * @return {object} An action object with a type of LOAD_BALANCE_HISTORY
+ */
+export function loadBalanceHistory() {
+  return {
+    type: LOAD_BALANCE_HISTORY,
   };
 }
 
@@ -71,31 +99,91 @@ export function loginError(error) {
 }
 
 /**
- * Dispatched when the repositories are loaded by the request saga
+ * Dispatched when the balance stats are loaded by the request saga
  *
- * @param  {array} repos The repository data
- * @param  {string} username The current username
+ * @param  {array} balanceStats The balance stats
+ * @param  {string} userId The current userId
  *
- * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
+ * @return {object} An action object with a type of LOAD_BALANCE_STATS_SUCCESS passing the balance stats
  */
-export function reposLoaded(repos, username) {
+export function balanceStatsLoaded(balanceStats, userId) {
   return {
-    type: LOAD_REPOS_SUCCESS,
-    repos,
-    username,
+    type: LOAD_BALANCE_STATS_SUCCESS,
+    balanceStats,
+    userId,
   };
 }
 
 /**
- * Dispatched when loading the repositories fails
+ * Dispatched when loading the balance stats fails
  *
  * @param  {object} error The error
  *
- * @return {object}       An action object with a type of LOAD_REPOS_ERROR passing the error
+ * @return {object} An action object with a type of LOAD_BALANCE_STATS_ERROR passing the error
  */
-export function repoLoadingError(error) {
+export function balanceStatsLoadError(error) {
   return {
-    type: LOAD_REPOS_ERROR,
+    type: LOAD_BALANCE_STATS_ERROR,
+    error,
+  };
+}
+
+/**
+ * Dispatched when the last 5 transactions are loaded by the request saga
+ *
+ * @param  {array} lastFiveTransactions The last 5 transactions
+ * @param  {string} userId The current userId
+ *
+ * @return {object} An action object with a type of LOAD_LAST_FIVE_TRANSACTIONS_SUCCESS passing the lastFiveTransactions
+ */
+export function lastFiveTransactionsLoaded(lastFiveTransactions, userId) {
+  return {
+    type: LOAD_LAST_FIVE_TRANSACTIONS_SUCCESS,
+    lastFiveTransactions,
+    userId,
+  };
+}
+
+/**
+ * Dispatched when loading the last 5 transactions fails
+ *
+ * @param  {object} error The error
+ *
+ * @return {object} An action object with a type of LOAD_LAST_FIVE_TRANSACTIONS_ERROR passing the error
+ */
+export function lastFiveTransactionsLoadError(error) {
+  return {
+    type: LOAD_LAST_FIVE_TRANSACTIONS_ERROR,
+    error,
+  };
+}
+
+/**
+ * Dispatched when the balance history is loaded by the request saga
+ *
+ * @param  {array} balanceHistory The balance history
+ * @param  {string} userId The current userId
+ *
+ * @return {object} An action object with a type of LOAD_BALANCE_HISTORY_SUCCESS passing the balanceHistory
+ */
+export function balanceHistoryLoaded(balanceHistory, userId) {
+  return {
+    type: LOAD_BALANCE_HISTORY_SUCCESS,
+    balanceHistory,
+    userId,
+  };
+}
+
+/**
+ * Dispatched when loading the balance history fails
+ *
+ * @param  {object} error The error
+ *
+ * @return {object} An action object with a type of LOAD_BALANCE_HISTORY_ERROR passing the error
+ */
+export function balanceHistoryLoadError(error) {
+  return {
+    type: LOAD_BALANCE_HISTORY_ERROR,
     error,
   };
 }

@@ -9,9 +9,22 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
-export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
-export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
+export const LOAD_BALANCE_STATS = 'boilerplate/App/LOAD_BALANCE_STATS';
+export const LOAD_BALANCE_STATS_SUCCESS =
+  'boilerplate/App/LOAD_BALANCE_STATS_SUCCESS';
+export const LOAD_BALANCE_STATS_ERROR =
+  'boilerplate/App/LOAD_BALANCE_STATS_ERROR';
+export const LOAD_LAST_FIVE_TRANSACTIONS =
+  'boilerplate/App/LOAD_LAST_FIVE_TRANSACTIONS';
+export const LOAD_LAST_FIVE_TRANSACTIONS_SUCCESS =
+  'boilerplate/App/LOAD_LAST_FIVE_TRANSACTIONS_SUCCESS';
+export const LOAD_LAST_FIVE_TRANSACTIONS_ERROR =
+  'boilerplate/App/LOAD_LAST_FIVE_TRANSACTIONS_ERROR';
+export const LOAD_BALANCE_HISTORY = 'boilerplate/App/LOAD_BALANCE_HISTORY';
+export const LOAD_BALANCE_HISTORY_SUCCESS =
+  'boilerplate/App/LOAD_BALANCE_HISTORY_SUCCESS';
+export const LOAD_BALANCE_HISTORY_ERROR =
+  'boilerplate/App/LOAD_BALANCE_HISTORY_ERROR';
 export const LOGIN = 'boilerplate/App/LOGIN';
 export const LOGIN_SUCCESS = 'boilerplate/App/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'boilerplate/App/LOGIN_ERROR';
