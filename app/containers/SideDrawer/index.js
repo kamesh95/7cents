@@ -5,6 +5,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Hidden from '@material-ui/core/Hidden';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
@@ -20,7 +21,7 @@ import Drawer from './Drawer';
 import Toolbar from './Toolbar';
 import Divider from './Divider';
 import ListHead from './ListHead';
-import ListItem from './ListItem';
+import MenuItem from './MenuItem';
 import IconButton from './IconButton';
 import ListItemIcon from './ListItemIcon';
 import ListItemText from './ListItemText';
@@ -49,12 +50,12 @@ export default function SideDrawer(props) {
         CATEGORIES
         <List>
           {['Home', 'Transactions', 'Bills & Invoices'].map((text, index) => (
-            <ListItem button key={text}>
+            <MenuItem button component={Link} to="/dashboard" key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
-            </ListItem>
+            </MenuItem>
           ))}
         </List>
       </ListHead>
@@ -63,12 +64,12 @@ export default function SideDrawer(props) {
         SUPPORT
         <List>
           {['Feedback', 'Contact'].map((text, index) => (
-            <ListItem button key={text}>
+            <MenuItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
-            </ListItem>
+            </MenuItem>
           ))}
         </List>
       </ListHead>

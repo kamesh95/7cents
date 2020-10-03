@@ -17,6 +17,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import ExpenseOverviewPage from 'containers/ExpenseOverviewPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
+import TransactionsPage from '../TransactionsPage/Loadable';
 
 const AppWrapper = styled.div`
   margin: 0 auto;
@@ -38,6 +39,7 @@ export default function App() {
         <Route exact path="/" component={LoginPage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="/dashboard" component={ExpenseOverviewPage} />
+        <Route path="/transactions" component={TransactionsPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

@@ -5,7 +5,8 @@ export default styled.div`
   font-size: 10px;
   color: black;
 
-  && .MuiListItem-button:hover {
+  && .MuiListItem-root.Mui-selected,
+  .MuiListItem-button:hover {
     background-color: mistyrose;
   }
 `;
